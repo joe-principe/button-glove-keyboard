@@ -9,11 +9,11 @@ Keyboard scan codes:
 * https://stackoverflow.com/a/27085911
 
 Buttons:
-https://www.amazon.com/Gikfun-12x12x7-3-Tactile-Momentary-Arduino/dp/B01E38OS7K
+* https://www.amazon.com/Gikfun-12x12x7-3-Tactile-Momentary-Arduino/dp/B01E38OS7K
 
 Debouncing:
-https://www.circuitbasics.com/switch-debouncing/
-https://www.e-tinkers.com/2021/05/the-simplest-button-debounce-solution/
+* https://www.circuitbasics.com/switch-debouncing/
+* https://www.e-tinkers.com/2021/05/the-simplest-button-debounce-solution/
 
 # Design Ideas
 * Have buttons on finger tips and use inputs to type like on a keyboard
