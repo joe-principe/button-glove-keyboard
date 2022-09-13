@@ -6,13 +6,20 @@ Keyboard scan codes:
 * https://www.freepascal.org/docs-html/rtl/keyboard/kbdscancode.html
 * https://en.wikipedia.org/wiki/USB_human_interface_device_class#Keyboards
 * https://www.win.tue.nl/~aeb/linux/kbd/scancodes-14.html
-* C:\Users\Joe\Downloads\hut1_3_0.pdf
 * https://stackoverflow.com/a/27085911
-* 
+
+Buttons:
+https://www.amazon.com/Gikfun-12x12x7-3-Tactile-Momentary-Arduino/dp/B01E38OS7K
+
+Debouncing:
+https://www.circuitbasics.com/switch-debouncing/
+https://www.e-tinkers.com/2021/05/the-simplest-button-debounce-solution/
 
 # Design Ideas
 * Have buttons on finger tips and use inputs to type like on a keyboard
-* Debounce the buttons using resistor (and capacitor?)
+* Debounce the buttons
+    * It seems like this'll be easier to do in software than in hardware
+    * Capacitor in parallel with resistor and the button should be able to debounce in hardware
 * Combinations of button presses -> actual keyboard input
     * Double/Triple Tap Keys?
         * Pro: More outputs with fewer inputs
@@ -26,7 +33,32 @@ Keyboard scan codes:
 * Bluetooth to communicate with computer/phone/etc.
 
 # Current Design Issues
-- [ ] 
+- [ ] Dealing with double tap
+- [ ] Dealing with pressing multiple buttons at once
+
+- [ ] Trigger LEDs for Caps Lock, Shift, Bluetooth Connected
+    * Shift Color: Yellow?
+    * Caps Color: Green
+    * Bluetooth Color: Blue
+- [ ] Communicating between Left and Right hands while they are separated
+    * Initially have both hands wired together
+    * How do other wireless devices communicate with each other (other than bluetooth)
+- [ ] Using Bluetooth to send signals to computer
+    * 
+- [ ] Softer buttons that are easier to toggle
+    * See the Amazon link
+
+## Double Tap
+
+## Multi-Press
+
+## LEDs
+
+## LR Communication
+
+## Bluetooth
+
+## Buttons
 
 # Finger-Index Layouts
 ## Left Even, Right Odd
