@@ -24,7 +24,7 @@
             </ol>
             <p>This is the one with which I've decided to go.</p>
             <h2>Designing the Circuit</h2>
-            After figuring out the indices, I started to work on designing the actual circuit itself. I learned about keyboard matrices and the way these circuits are designed. The keys of a keyboard are typically arranged into a matrix of buttons. At the top of the columns is an input voltage V<sub>CC</sub> that is usually +5V followed by a 10k&Omega; pullup resistor. The buttons are connected to these columns, and after the buttons is a diode that prevents ghosting.</p>
+            <p>After figuring out the indices, I started to work on designing the actual circuit itself. I learned about keyboard matrices and the way these circuits are designed. The keys of a keyboard are typically arranged into a matrix of buttons. At the top of the columns is an input voltage V<sub>CC</sub> that is usually +5V followed by a 10k&Omega; pullup resistor. The buttons are connected to these columns, and after the buttons is a diode that prevents ghosting.</p>
             <p>My understanding of how the computer determines which key has been pressed is that an MCU very quickly switches an input voltage to each column on and off sequentially. Whenever a key is pressed, that row will begin to output a voltage. This combination of column input and row output will indicate which button is currently being pressed.</p>
             <p>For my design, I went with two columns and five rows for the two hands and five fingers, respectively.</p>
             <h2>Scancodes</h2>
