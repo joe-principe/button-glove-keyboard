@@ -9,43 +9,41 @@
 </style>
     </head>
     <body>
-        <article>
-            <h1>Day 0</h1>
-            <p>I had the idea for this project when I was walking to school one day. I figured that if you were walking, had a HUD, and needed a way to type, it'd be pretty inconvenient to have to suspend a keyboard somehow, so a better method would be some non-standard keyboard that you could wear and that was low-profile enough to keep with you. I thought that a fun way to do that would be to have the keys on your fingertips with combinations of button presses allowing you to perform (most) of the things that you could do with a regular keyboard.</p>
-            <p>Anyway, I recently decided to start designing this device the other day</p>
-            <h2>Numbering the Fingers</h2>
-            <p>To start, I had to decide on the way I would number each of the fingers.</p>
-            <p>The first way was to number the fingers increasingly from left to right with the palm face down. The numbering is easy enough to remember, but the relationship between the left hand and the right hand indices was not as easy (the difference between right and left is an odd number that decreases going from the pinkies to the thumbs.</p>
-            <p>The second way was to number the left hand using the evens and the right hand using the odds. The numbers for both hands increased going from pinky to thumb. Though this layout was weirder than the previous one, the left and right hand indices were only 1 off from each other for each finger.</p>
-            <p>The final way was based on the way that most of the people that I asked count on their fingers. The benefits of this were two-fold:</p>
-            <ol>
-                <li>The numbering is familiar to most people, so it would be easy to understand and remember 
-                <li>The LR indices are only five off from each other for each finger.
-            </ol>
-            <p>This is the one with which I've decided to go.</p>
-            <h2>Designing the Circuit</h2>
-            <p>After figuring out the indices, I started to work on designing the actual circuit itself. I learned about keyboard matrices and the way these circuits are designed. The keys of a keyboard are typically arranged into a matrix of buttons. At the top of the columns is an input voltage V<sub>CC</sub> that is usually +5V followed by a 10k&Omega; pullup resistor. The buttons are connected to these columns, and after the buttons is a diode that prevents ghosting.</p>
-            <p>My understanding of how the computer determines which key has been pressed is that an MCU very quickly switches an input voltage to each column on and off sequentially. Whenever a key is pressed, that row will begin to output a voltage. This combination of column input and row output will indicate which button is currently being pressed.</p>
-            <p>For my design, I went with two columns and five rows for the two hands and five fingers, respectively.</p>
-            <h2>Scancodes</h2>
-            <p>Originally, when I first started planning out this project, my thought was that the buttons would output the ASCII values. I soon learned aout "scancodes", which are what the keyboard sends to the computer to tell it which key/keys has/have been pressed. There are lots of different scancodes, but the ones I care about are USB scancodes.</p>
-            <p>According to <a href="https://www.usb.org/document-library/hid-usage-tables-13">"HID Usage Tables for Universal Serial Bus (USB) Version 1.3"</a> from <a href="https://usb.org/">usb.org</a>, there are currently 231 keyboard scancodes. Not all of these are typeable on a standard keyboard, and fewer will be supported on my keyboard glove. This is due in part to how annoying it would be to have to click three or more of your fingers together to get certain uncommon outputs. The other part is because certain keyboard keys like the numpad just won't exist, so having numpad keys as well as Num Lock wouldn't make sense.</p>
-            <p>An issue I'm currently anticipating is figuring out how to get the computer to register multiple different keys or repeated strokes of the same key as a different scancode. Fortunately for me, that's a problem that Future Joe gets to deal with</p>
-            <h2>LEDs</h2>
-            <p>I plan on having LEDs on the glove to indicate a few things:</p>
-            <ul>
-                <li>
-                    When shift is being pressed on that hand
-                </li>
-                <li>
-                    When caps lock is triggered
-                </li>
-                <li>
-                    When Bluetooth is/has been connected
-                </li>
-            </ul>
-            <p>The first two should be easy enough as they're only dependent on the right keys having been pressed. The Bluetooth LED will have to deal with the wireless connection, but again, that's Future Joe's problem.</p>
-        </article>
+        <h1>Day 0</h1>
+        <p>I had the idea for this project when I was walking to school one day. I figured that if you were walking, had a HUD, and needed a way to type, it'd be pretty inconvenient to have to suspend a keyboard somehow, so a better method would be some non-standard keyboard that you could wear and that was low-profile enough to keep with you. I thought that a fun way to do that would be to have the keys on your fingertips with combinations of button presses allowing you to perform (most) of the things that you could do with a regular keyboard.</p>
+        <p>Anyway, I recently decided to start designing this device the other day</p>
+        <h2>Numbering the Fingers</h2>
+        <p>To start, I had to decide on the way I would number each of the fingers.</p>
+        <p>The first way was to number the fingers increasingly from left to right with the palm face down. The numbering is easy enough to remember, but the relationship between the left hand and the right hand indices was not as easy (the difference between right and left is an odd number that decreases going from the pinkies to the thumbs.</p>
+        <p>The second way was to number the left hand using the evens and the right hand using the odds. The numbers for both hands increased going from pinky to thumb. Though this layout was weirder than the previous one, the left and right hand indices were only 1 off from each other for each finger.</p>
+        <p>The final way was based on the way that most of the people that I asked count on their fingers. The benefits of this were two-fold:</p>
+        <ol>
+            <li>The numbering is familiar to most people, so it would be easy to understand and remember 
+            <li>The LR indices are only five off from each other for each finger.
+        </ol>
+        <p>This is the one with which I've decided to go.</p>
+        <h2>Designing the Circuit</h2>
+        <p>After figuring out the indices, I started to work on designing the actual circuit itself. I learned about keyboard matrices and the way these circuits are designed. The keys of a keyboard are typically arranged into a matrix of buttons. At the top of the columns is an input voltage V<sub>CC</sub> that is usually +5V followed by a 10k&Omega; pullup resistor. The buttons are connected to these columns, and after the buttons is a diode that prevents ghosting.</p>
+        <p>My understanding of how the computer determines which key has been pressed is that an MCU very quickly switches an input voltage to each column on and off sequentially. Whenever a key is pressed, that row will begin to output a voltage. This combination of column input and row output will indicate which button is currently being pressed.</p>
+        <p>For my design, I went with two columns and five rows for the two hands and five fingers, respectively.</p>
+        <h2>Scancodes</h2>
+        <p>Originally, when I first started planning out this project, my thought was that the buttons would output the ASCII values. I soon learned aout "scancodes", which are what the keyboard sends to the computer to tell it which key/keys has/have been pressed. There are lots of different scancodes, but the ones I care about are USB scancodes.</p>
+        <p>According to <a href="https://www.usb.org/document-library/hid-usage-tables-13">"HID Usage Tables for Universal Serial Bus (USB) Version 1.3"</a> from <a href="https://usb.org/">usb.org</a>, there are currently 231 keyboard scancodes. Not all of these are typeable on a standard keyboard, and fewer will be supported on my keyboard glove. This is due in part to how annoying it would be to have to click three or more of your fingers together to get certain uncommon outputs. The other part is because certain keyboard keys like the numpad just won't exist, so having numpad keys as well as Num Lock wouldn't make sense.</p>
+        <p>An issue I'm currently anticipating is figuring out how to get the computer to register multiple different keys or repeated strokes of the same key as a different scancode. Fortunately for me, that's a problem that Future Joe gets to deal with</p>
+        <h2>LEDs</h2>
+        <p>I plan on having LEDs on the glove to indicate a few things:</p>
+        <ul>
+            <li>
+                When shift is being pressed on that hand
+            </li>
+            <li>
+                When caps lock is triggered
+            </li>
+            <li>
+                When Bluetooth is/has been connected
+            </li>
+        </ul>
+        <p>The first two should be easy enough as they're only dependent on the right keys having been pressed. The Bluetooth LED will have to deal with the wireless connection, but again, that's Future Joe's problem.</p>
     </body>
 </html>
 
