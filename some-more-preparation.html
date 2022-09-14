@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Some More Preparation</title>
+<style>
+    @media (prefers-color-scheme: dark){ body {color:#fff;background:#000} a:link {color:#cdf} a:hover, a:visited:hover {color:#def} a:visited {color:#dcf} } body{ margin:1em auto; max-width:40em; padding:0 .62em; font:1.2em/1.62 sans-serif } h1,h2,h3 { line-height:1.2 } @media print{ body{ max-width:none } }
+</style>
+    </head>
+    <body>
+        <h1>Some More Preparation</h1>
+        <p>I don't have my Arduino with me at the moment, so until I do, I can only continue to prepare for the rest of the project.
+        <h2>Debouncing</h2>
+        <p>This is the main issue I've been focusing on for the past couple of days. Whenever you press or release a button, the metal contacts of the button bounce on the metal leads. This causes the button to rapidly jump between the on and off states until the button is either fully on or fully off. This is an issue because these bounces can be picked up as undesired button presses/releases. We have to debounce the switch in order to get only the presses and releases we really want.</p>
+        <p>A button can either be debounced in software or hardware. With a software approac, we read the current state of the output, wait some time, then read the state again. If the states are the same, then most likely the change was a result of a button press and the output should be treated as correct. This effectively ignores any bounces by waiting until after they've concluded.</p>
+        <p>There are many different ways to debounc a switch with hardware. One of the ways I read about was to add an RC circuit in parallel with the switch and a Schmitt trigger in series with the resistor to act as the output. The RC portion should act as a low pass filter, effectively filtering out the bouncing of the switch. The Schmitt trigger helps give our output signal a sharper transition than it would have with just the resistor and capacitor.</p>
+        <p>I am currently debating how to approach this. My though is that if I <em>can</em> use both software and hardware, why not just do that? This could help ensure there is little to no bounce from key presses; however, it could also result in a lot of overhead. On the hardware side, adding more components to each switch would increase the cost and size of the keyboard glove significantly, which would make it a lot less portable than I'd like. There's probably a good middle ground that allows a little bounce on the hardware side that is then removed on the software side.</p>
+        <h2>The Buttons Themselves</h2>
+        <p>Pushbuttons are pretty simple, I've learned. They're basically just two wires with a metal contact that, when the button is pressed, connects the two wires together. There are four leads on the button to provide stability.</p>
+        <p>The buttons I'm planning on using are <a href="https://www.amazon.com/Gikfun-12x12x7-3-Tactile-Momentary-Arduino/dp/B01E38OS7K">these ones from Gikfun</a> that I found on Amazon. They seem fairly large, which is a plus because they'll be on the finger tips and their size should make pressing them down using the skin or other buttons a breeze.</p>
+    </body>
+</html>
+
