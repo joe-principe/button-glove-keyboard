@@ -43,13 +43,13 @@ void loop() {
   Serial.print("Left Pinky Button State: ");
   Serial.println(l_p_state);
   
-  Serial.println("Left Ring Button State: ");
+  Serial.print("Left Ring Button State: ");
   Serial.println(l_r_state);
  
-  Serial.println("Left Bird Button State: ");
+  Serial.print("Left Bird Button State: ");
   Serial.println(l_b_state);
 
-  Serial.println("Left Pointer Button State: ");
+  Serial.print("Left Pointer Button State: ");
   Serial.println(l_p_state);
 
   Serial.print("Left Thumb Button State: ");
