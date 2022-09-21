@@ -41,19 +41,19 @@ void loop() {
     l_states[i] = digitalRead(LEFT_FINGERS[i]);
   }
   Serial.print("Left Pinky Button State: ");
-  Serial.println(l_pinky_buttonstate);
+  Serial.println(l_p_state);
   
   Serial.println("Left Ring Button State: ");
-  Serial.println(l_ring_buttonstate);
+  Serial.println(l_r_state);
  
   Serial.println("Left Bird Button State: ");
-  Serial.println(l_bird_buttonstate);
+  Serial.println(l_b_state);
 
   Serial.println("Left Pointer Button State: ");
-  Serial.println(l_point_buttonstate);
+  Serial.println(l_p_state);
 
   Serial.print("Left Thumb Button State: ");
-  Serial.println(l_thumb_buttonstate);
+  Serial.println(l_t_state);
 
   delay(1000);
 }
