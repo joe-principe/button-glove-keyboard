@@ -1,42 +1,59 @@
 // Set the pin numbers of the pushbuttons
-// Will likely put these into an array later on
-const int LEFT_PINKY = 6;
-const int LEFT_RING = 5;
-const int LEFT_BIRD = 4;
-const int LEFT_POINT = 3;
-const int LEFT_THUMB = 2;
+const int L_F = 13; // Left Fore
+const int L_B = 12; // Left Bird
+const int L_R = 11; // Left Ring
+const int L_P = 10; // Left Pinky
+const int L_T = 9;  // Left Thumb
+const int LEFT_FINGERS[5] = {L_F, L_B, L_R, L_P, L_T};
+
+// const int R_F = 7;  // Right Fore
+// const int R_B = 6;  // Right Bird
+// const int R_R = 5;  // Right Ring
+// const int R_P = 4;  // Right Pinky
+// const int R_T = 3;  // Right Thumb
+// const int RIGHT_FINGERS[5] = {R_F, R_B, R_R, R_P, R_T};
 
 // Set the starting state of the buttons as low
-int l_pinky_buttonstate, l_ring_buttonstate, l_bird_buttonstate, l_point_buttonstate, l_thumb_buttonstate = 0;
+bool l_f_state, l_b_state, l_r_state, l_p_state, l_t_state = false;
+bool l_states[5] = {false, false, false, false, false};
+
+// bool r_f_state, r_// b_state, r_r_state, r_p_state, r_t_state = false;
+// bool r_states[5] = {false, false, false, false, false};
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
 
   // Initialize the left hand pushbuttons as inputs
-  pinMode(LEFT_PINKY, INPUT);
-  pinMode(LEFT_RING, INPUT);
-  pinMode(LEFT_BIRD, INPUT);
-  pinMode(LEFT_POINT, INPUT);
-  pinMode(LEFT_THUMB, INPUT);
+  for (int i = 0; i < 5; i++) {
+    pinMode(LEFT_FINGERS[i], INPUT);
+  }
+  
+  // Initialize the right hand pushbuttons as inputs
+  // for (int i = 0; i < 5; i++) {
+  //  pinMode(RIGHT_FINGERS[i], INPUT);
+  // }
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  l_pinky_buttonstate = digitalRead(LEFT_PINKY);
+  for (int i = 0; i < 5; i++) {
+    l_states[i] = digitalRead(LEFT_FINGERS[i]);
+  }
   Serial.print("Left Pinky Button State: ");
   Serial.println(l_pinky_buttonstate);
-  l_ring_buttonstate = digitalRead(LEFT_RING);
+  
   Serial.println("Left Ring Button State: ");
   Serial.println(l_ring_buttonstate);
-  l_bird_buttonstate = digitalRead(LEFT_BIRD);
+ 
   Serial.println("Left Bird Button State: ");
   Serial.println(l_bird_buttonstate);
-  l_point_buttonstate = digitalRead(LEFT_POINT);
+
   Serial.println("Left Pointer Button State: ");
   Serial.println(l_point_buttonstate);
-  l_thumb_buttonstate = digitalRead(LEFT_THUMB);
+
   Serial.print("Left Thumb Button State: ");
   Serial.println(l_thumb_buttonstate);
+
   delay(1000);
 }
