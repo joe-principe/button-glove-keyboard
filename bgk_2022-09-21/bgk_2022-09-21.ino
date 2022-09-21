@@ -28,7 +28,7 @@ void setup() {
   for (int i = 0; i < 5; i++) {
     pinMode(LEFT_FINGERS[i], INPUT);
   }
-  
+
   // Initialize the right hand pushbuttons as inputs
   // for (int i = 0; i < 5; i++) {
   //  pinMode(RIGHT_FINGERS[i], INPUT);
@@ -37,23 +37,31 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  for (int i = 0; i < 5; i++) {
-    l_states[i] = digitalRead(LEFT_FINGERS[i]);
-  }
-  Serial.print("Left Pinky Button State: ");
-  Serial.println(l_p_state);
-  
-  Serial.print("Left Ring Button State: ");
-  Serial.println(l_r_state);
- 
-  Serial.print("Left Bird Button State: ");
-  Serial.println(l_b_state);
-
-  Serial.print("Left Pointer Button State: ");
-  Serial.println(l_p_state);
-
-  Serial.print("Left Thumb Button State: ");
-  Serial.println(l_t_state);
-
-  delay(1000);
+     for (int i = 0; i < 5; i++) {
+       l_states[i] = digitalRead(LEFT_FINGERS[i]);
+       Serial.print("l_states[");
+       Serial.print(i);
+       Serial.print("] current value: ");
+       Serial.println(l_states[i]);
+       delay(250);
+     }
+     Serial.println("--- --- ---");
+  //   Serial.print("Left Pinky Button State: ");
+  //   Serial.println(l_p_state);
+  // 
+  //   Serial.print("Left Ring Button State: ");
+  //   Serial.println(l_r_state);
+  // 
+  //   Serial.print("Left Bird Button State: ");
+  //   Serial.println(l_b_state);
+  // 
+  //   Serial.print("Left Pointer Button State: ");
+  //   Serial.println(l_p_state);
+  // 
+  //   Serial.print("Left Thumb Button State: ");
+  //   Serial.println(l_t_state);
+  // 
+  //   Serial.println("--- --- ---");
+  // 
+  //   delay(1000);
 }
