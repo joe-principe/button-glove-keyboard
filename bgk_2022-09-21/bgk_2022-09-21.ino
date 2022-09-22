@@ -15,10 +15,12 @@ const int LEFT_FINGERS[5] = {L_F, L_B, L_R, L_P, L_T};
 
 // Set the starting state of the buttons as low
 bool l_f_state, l_b_state, l_r_state, l_p_state, l_t_state = false;
-bool l_states[5] = {false, false, false, false, false};
+bool l_states[5] = {l_f_state, l_b_state, l_r_state, l_p_state, l_t_state};
+bool l_oldstates[5] = {l_f_state, l_b_state, l_r_state, l_p_state, l_t_state};
+bool l_output[5] = {l_f_state, l_b_state, l_r_state, l_p_state, l_t_state};
 
-// bool r_f_state, r_// b_state, r_r_state, r_p_state, r_t_state = false;
-// bool r_states[5] = {false, false, false, false, false};
+// bool r_f_state, r_b_state, r_r_state, r_p_state, r_t_state = false;
+// bool r_states[5] = {r_f_state, r_b_state, r_r_state, r_p_state, r_t_state};
 
 void setup() {
   // put your setup code here, to run once:
@@ -37,31 +39,19 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-     for (int i = 0; i < 5; i++) {
-       l_states[i] = digitalRead(LEFT_FINGERS[i]);
-       Serial.print("l_states[");
-       Serial.print(i);
-       Serial.print("] current value: ");
-       Serial.println(l_states[i]);
-       delay(250);
-     }
-     Serial.println("--- --- ---");
-  //   Serial.print("Left Pinky Button State: ");
-  //   Serial.println(l_p_state);
-  // 
-  //   Serial.print("Left Ring Button State: ");
-  //   Serial.println(l_r_state);
-  // 
-  //   Serial.print("Left Bird Button State: ");
-  //   Serial.println(l_b_state);
-  // 
-  //   Serial.print("Left Pointer Button State: ");
-  //   Serial.println(l_p_state);
-  // 
-  //   Serial.print("Left Thumb Button State: ");
-  //   Serial.println(l_t_state);
-  // 
-  //   Serial.println("--- --- ---");
-  // 
-  //   delay(1000);
+  for (int i = 0; i < 5; i++) {
+    l_states[i] = digitalRead(LEFT_FINGERS[i]);
+    
+    if ((l_states[i] == true) && (l_oldstates[i] == false)) {
+      l_output[i] = true;
+      delay(10);
+    } else {
+      l_output[i] = false;
+      delay(10);
+    }
+
+    l_oldstates[i] = l_states[i];
+  }
+
+  delay(1000);
 }
